@@ -21,8 +21,8 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
-+import com.hoho.android.usbserial.driver.CdcAcmSerialDriver;
-+import com.hoho.android.usbserial.driver.ProbeTable;
+import com.hoho.android.usbserial.driver.CdcAcmSerialDriver;
+import com.hoho.android.usbserial.driver.ProbeTable;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -137,7 +137,7 @@ public class UsbSerialportForAndroidModule extends ReactContextBaseJavaModule im
         customTable.addProduct(0x303a, 0x1001, CdcAcmSerialDriver.class); // e.g. device with custom VID+PID
         UsbSerialProber usbCustomProber = new UsbSerialProber(customTable);
         UsbSerialDriver driver = usbCustomProber.probeDevice(device);
-        
+
         if (driver == null) {
             promise.reject(CODE_DRIVER_NOT_FOND, "no driver for device");
             return;
