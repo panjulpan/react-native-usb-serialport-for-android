@@ -167,16 +167,16 @@ public class UsbSerialportForAndroidModule extends ReactContextBaseJavaModule im
     }
 
     @ReactMethod
-    public void send(int deviceId, String hexStr, Promise promise) {
+    public void send(int deviceId, byte[] hexStr, Promise promise) {
         UsbSerialPortWrapper wrapper = usbSerialPorts.get(deviceId);
         if (wrapper == null) {
             promise.reject(CODE_DEVICE_NOT_OPEN, "device not open");
             return;
         }
 
-        byte[] data = hexStringToByteArray(hexStr);
+        // byte[] data = hexStringToByteArray(hexStr);
         try {
-            wrapper.send(data);
+            wrapper.send(hexStr);
             promise.resolve(null);
         } catch (IOException e) {
             promise.reject(CODE_SEND_FAILED, "send failed", e);
