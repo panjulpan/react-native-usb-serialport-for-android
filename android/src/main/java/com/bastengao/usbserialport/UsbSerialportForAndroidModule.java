@@ -131,7 +131,7 @@ public class UsbSerialportForAndroidModule extends ReactContextBaseJavaModule im
             return;
         }
 
-        UsbSerialDriver driver = UsbSerialProber.getDefaultProber().probeDevice(device);
+        // UsbSerialDriver driver = UsbSerialProber.getDefaultProber().probeDevice(device);
 
         ProbeTable customTable = new ProbeTable();
         customTable.addProduct(0x303a, 0x1001, CdcAcmSerialDriver.class); // e.g. device with custom VID+PID
